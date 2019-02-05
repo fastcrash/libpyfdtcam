@@ -1,5 +1,3 @@
-# Example Package
+# libpyfdtcam
 
-This is a simple example package. You can use
-[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
+This is a small Library for FDT IP Cameras. Its writte for easy access to the cgi-api.
