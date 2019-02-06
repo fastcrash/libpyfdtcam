@@ -3,6 +3,7 @@ A small Library for FDT IP-Cams.
 """
 
 import requests
+from requests.auth import HTTPBasicAuth
 
 class FDTCam(object):
     def __init__(self, host, port, username, password):
@@ -61,12 +62,12 @@ class FDTCam(object):
 
     def get_snapshot(self):
         """Return camera snapshot."""
-        url = self.__command_url.format('web/tmpfs/auto.jpg')
+        url = "http://" + self._host + "/cgi-bin/hi3510/web/tmpfs/auto.jpg"
 
-        req = self.session.get(url)
+        req = self.session.get(url, auth=(self._username, self._password))
         if req.ok:
             return req.content
-
+            
         return req
 
     @property
@@ -100,7 +101,7 @@ class FDTCam(object):
         """ Switch IR-LED off """
         self.send("setinfrared", 0)
 
-    
+
     def ptz_preset(self, preset):
         """ Move cam to PTZ preset."""
         preset -= 1
