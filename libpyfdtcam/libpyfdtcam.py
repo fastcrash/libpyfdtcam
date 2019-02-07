@@ -13,8 +13,6 @@ class FDTCam(object):
         self._port = port
         self.session = requests.Session()
 
-
-
     @property
     def __baseurl(self):
         """Base URL used CGI API requests on FDT Camera."""
@@ -63,11 +61,9 @@ class FDTCam(object):
     def get_snapshot(self):
         """Return camera snapshot."""
         url = "http://" + self._host + "/cgi-bin/hi3510/web/tmpfs/auto.jpg"
-
         req = self.session.get(url, auth=(self._username, self._password))
         if req.ok:
             return req.content
-            
         return req
 
     @property
@@ -135,14 +131,14 @@ class FDTCam(object):
         self.ptz_control("stop", 45, 0)
 
     @property
-    def motion_detect(self):
+    def motion_detect_status(self):
         """ Get status of Motion Detection. """
-        return bool(self.query("getmdattr").get("m1_enable"))
+        return bool(int(self.query("getmdattr").get("m1_enable")))
 
-    @motion_detect.setter
+
     def motion_detect(self, status, area=1, sens=50):
         """ Set status of Motion Detection """
-        payload = {"enable": str(status), "area": str(area), "s": str(sens)}
+        payload = {"enable": str(status), "name": str(area), "s": str(sens)}
         self.send("setmdattr", payload)
 
     def motion_on(self):

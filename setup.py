@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="libpyfdtcam",
-    version="1.0.1",
+    version="1.0.2",
     author="losse83",
     author_email="losse83@posteo.de",
-    description="A lib to contro FDT IP cameras.",
+    description="A lib to control FDT IP cameras.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/fastcrash/libpyfdtcam",
