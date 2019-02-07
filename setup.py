@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="libpyfdtcam",
-    version="1.0.3",
+    version="1.0.4",
     author="losse83",
     author_email="losse83@posteo.de",
     description="A lib to control FDT IP cameras.",

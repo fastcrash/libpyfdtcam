@@ -136,18 +136,18 @@ class FDTCam(object):
         return bool(int(self.query("getmdattr").get("m1_enable")))
 
 
-    def motion_detect(self, status, area=1, sens=50):
+    def set_motion_detect(self, status, area=1, sens=50):
         """ Set status of Motion Detection """
         payload = {"enable": str(status), "name": str(area), "s": str(sens)}
         self.send("setmdattr", payload)
 
     def motion_on(self):
         """ Activate Motion Detection. """
-        self.motion_detect(1)
+        self.set_motion_detect(1)
 
     def motion_off(self):
         """ Deactivate Motion Detection. """
-        self.motion_detect(0)
+        self.set_motion_detect(0)
 
     def to_dict(self, response):
         """Format response to dict."""
